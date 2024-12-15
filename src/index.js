@@ -4,6 +4,7 @@ import cors from 'cors';
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
 import helmet from 'helmet';
+import { gameConfig1, validationConfig1 } from './game1.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -41,46 +42,19 @@ app.use(helmet({
 }));
 app.use(express.json());
 
-// Sample game configuration
+// Game configuration
 const gameConfig = {
-    gameID: "1",
-    questions: [
-        {
-            id: 1,
-            title: "Vad heter Sveriges huvudstad?",
-            image: "sthlm.png",
-            answers: [
-                { id: "1.A", text: "A. Wien" },
-                { id: "1.B", text: "B. Stockholm" },
-                { id: "1.C", text: "C. Gerhard Schröder" }
-            ]
-        },
-        {
-            id: 2,
-            title: "Var bor Agneta och Thomas?",
-            image: "oland.png",
-            answers: [
-                { id: "2.A", text: "A. Öland" },
-                { id: "2.B", text: "B. Innsbruck" },
-                { id: "2.C", text: "C. Gotland" }
-            ]
-        }
-    ]
+    ...gameConfig1
 };
 
-// Sample answer validation configuration
+// Answer validation configuration
 const validationConfig = {
-    "1": {
-        questions: [
-            { id: "1", answer: "B" },
-            { id: "2", answer: "A" },
-        ]
-    }
+    ...validationConfig1
 };
 
-// Sample high scores
+// High scores
 let highScores = [
-    { name: "Per", score: 0 },
+    { name: "Angela Merkel", score: 0 },
 ];
 
 // Get game configuration
