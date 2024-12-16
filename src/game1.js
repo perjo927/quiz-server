@@ -6,9 +6,9 @@ export const gameConfig1 = {
                 title: "Vad heter Sveriges huvudstad?",
                 image: "sthlm.png",
                 answers: [
-                    { id: "1.A", text: "A. Wien" },
+                    { id: "1.A", text: "A. Oskarshamn" },
                     { id: "1.B", text: "B. Stockholm" },
-                    { id: "1.C", text: "C. Gerhard Schröder" }
+                    { id: "1.C", text: "C. Wienerbröd" }
                 ]
             },
             {
@@ -17,7 +17,7 @@ export const gameConfig1 = {
                 image: "oland.png",
                 answers: [
                     { id: "2.A", text: "A. Öland" },
-                    { id: "2.B", text: "B. Innsbruck" },
+                    { id: "2.B", text: "B. Snöland" },
                     { id: "2.C", text: "C. Gotland" }
                 ]
             },
