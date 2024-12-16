@@ -120,6 +120,16 @@ export const gameConfig2 = {
                     { id: "12.B", text: "B. Katt" },
                     { id: "12.C", text: "C. Fisk" }
                 ]
+            },
+            {
+                id: 13,
+                title: "Vad heter den här coola personen?",
+                image: "sixten.png",
+                answers: [
+                    { id: "13.A", text: "A. Sixten" },
+                    { id: "13.B", text: "B. Blixten" },
+                    { id: "13.C", text: "C. Sigismund" }
+                ]
             }
         ]
     }
@@ -141,6 +151,7 @@ export const validationConfig2 = {
             { id: "10", answer: "C" },
             { id: "11", answer: "B" },
             { id: "12", answer: "B" },
+            { id: "13", answer: "A" },
         ]
     }
 };
