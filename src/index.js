@@ -14,7 +14,8 @@ const passphrase = "kanelbulle";
 
 const allowedOrigins = [
     'http://localhost:5173',
-    'https://quizbattle-au.netlify.app'
+    'https://quizbattle-au.netlify.app',
+    'https://quizbattle-no.netlify.app',
 ];
 
 const corsOptions = {
