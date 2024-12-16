@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
 import helmet from 'helmet';
 import { gameConfig1, validationConfig1 } from './game1.js';
+import { gameConfig2, validationConfig2 } from './game2.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -44,22 +45,30 @@ app.use(express.json());
 
 // Game configuration
 const gameConfig = {
-    ...gameConfig1
+    ...gameConfig1,
+    ...gameConfig2
 };
 
 // Answer validation configuration
 const validationConfig = {
-    ...validationConfig1
+    ...validationConfig1,
+    ...validationConfig2
 };
 
-// High scores
-let highScores = [
-    { name: "Angela Merkel", score: 0 },
-];
+const highScores = {
+    "1": [
+        { name: "Angela Merkel", score: 0 }
+    ],
+    "2": [
+        { name: "Per", score: 0 },
+    ]
+}
 
 // Get game configuration
 app.get('/api/game/:gameId', (req, res) => {
-    res.json(gameConfig);
+    const { gameId } = req.params;
+
+    res.json(gameConfig[gameId]);
 });
 
 // Validate answer
@@ -77,15 +86,20 @@ app.post('/api/validate/:gameId/question/:questionId', (req, res) => {
 });
 
 // Get high scores
-app.get('/api/highscores', (req, res) => {
-    res.json(highScores.slice(0, 10));
+app.get('/api/highscores/:gameId', (req, res) => {
+    const { gameId } = req.params;
+
+    res.json(highScores[gameId].slice(0, 10));
 });
 
 // Add new high score
-app.post('/api/highscores', (req, res) => {
+app.post('/api/highscores/:gameId', (req, res) => {
+    const { gameId } = req.params;
     const { name, score } = req.body;
-    highScores.push({ name, score });
-    highScores.sort((a, b) => b.score - a.score);
+
+    highScores[gameId].push({ name, score });
+    highScores[gameId].sort((a, b) => b.score - a.score);
+
     res.json({ success: true });
 });
 
